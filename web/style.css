@@ -1,0 +1,43 @@
+body {
+	margin:0;	}
+
+#p-title {
+	text-align:center;	}
+
+.column-1 {
+  text-align:center;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.buyer-col {
+  margin-left: 5%;
+  border: 1px solid #4CAF50;
+  width: 90%;
+}
+
+.column-2 {
+  text-align:center;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.seller-col {
+  margin-left: 5%;
+  border: 1px solid #4CAF50;
+  width: 90%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+}
