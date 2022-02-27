@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="ref.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="conditional.js"></script>		
+    <link rel="stylesheet" href="bootstrap-iso.css" /> <!-- https://formden.com/blog/isolate-bootstrap -->	
+</head>
+
+<body>
+
+    <div class="space-holding-2">
+    </div>
+
+<div id="card">
+
+    <div class="row">
+		<div class="column-1">
+			<div class="picture-col">
+                <img id="form-side" src="4BC.png">
+            
+            </div>
+		</div>
+
+		<div class="column-2">
+			<div class="form-col">
+                
+                <form id="registration_form">
+                    <div class="form-group">
+
+                        <label class="control-label ">
+                            Please fill the following information
+                        </label>
+
+                        <div class="small-space-holding">
+                        </div>
+
+                        <div class="in-line">
+
+                            <div class="radio">
+                                <label class="radio">
+                                <input name="rating" type="radio" value="Individual"/>
+                                     Individual
+                                </label>
+                            </div>
+                                   
+                            <div class="radio">
+                                    <label class="radio">
+                                     <input name="rating" type="radio" value="Corporate"/>
+                                     Corporate
+                                    </label>
+                            </div>
+
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group hidden">
+
+                        <label class="control-label" for="feedback_bad">
+                            Please enter correct information
+                        </label>
+
+                        <div class="space-holding">
+                        </div>
+
+                        <div>
+                                <input class="input-bar" type="text" placeholder="Full Name" name="name">
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+                        
+                        <div class="in-line">
+                                <input class="input-bar-5" type="text" placeholder="Birthdate" name="birthday">
+                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                        <!--/div-->
+
+                        <select name="gender" class="input-bar-6">
+                            <option disabled="disabled" selected="selected">Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Non-binary</option>
+                        </select>
+                        </div>
+                        <div class="select-dropdown"></div>
+
+                        <div class="space-holding">
+                        </div>
+                        
+                        <div>
+                                <input class="input-bar" type="email" placeholder="Email" name="email">
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+
+                        <div class="in-line">
+                            <input class="input-bar-4" type="num" placeholder="ISD Code" name="isd_code">
+                        
+                            <input class="input-bar-5" type="tel" placeholder="Phone Number" name="contact_number">
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+
+                        <textarea class="input-bar input-bar-2" id="feedback_bad" placeholder="Address" name="feedback_bad" rows="3" ></textarea>
+
+                        <div class="space-holding">
+                        </div>
+                        
+                        <div class="in-line">
+                                <input class="input-bar-3" type="text" placeholder="City" name="city">
+                        
+                            <input class="input-bar-3" type="text" placeholder="State" name="state">
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+
+                        <div class="in-line">
+                            <input class="input-bar-3" type="text" placeholder="Country" name="country">
+                        
+                            <input class="input-bar-3" type="text" placeholder="Pincode/Zipcode" name="pincode">
+                        </div>
+
+                        <div class="space-holding">
+                        </div>
+
+                        <div>
+                            <label class="radio-inline">
+                                <input name="testimonial" type="radio" value="Sell"/>
+                                    Sell only
+                            </label>
+                                
+                            <label class="radio-inline">
+                                <input name="testimonial" type="radio" value="buy"/>
+                                    Buy only
+                            </label>
+
+                            <label class="radio-inline">
+                                <input name="testimonial" type="radio" value="yes"/>
+                                    Both
+                            </label>
+                        </div>
+
+                        
+
+                        <button class="btn btn-primary " name="submit" type="submit">
+                            submit
+                        </button>
+
+                    </div>
+                         
+                    
+
+
+
+                    <div class="form-group hidden" id="div_testimonial">
+                        <div>
+
+                            <label class="control-label" for="feedback_bad">
+                                Please enter Corporation Information
+                            </label>
+    
+                            <div class="space-holding">
+                            </div>
+    
+                            <div>
+                                    <input class="input-bar" type="text" placeholder="Corporation Name" name="name">
+                            </div>
+
+                            <div class="space-holding">
+                            </div>
+                            
+                            <div class="in-line">
+                                <input class="input-bar-3" type="text" placeholder="Date of Incorporation" name="doc">
+                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                            <!--/div-->
+    
+                                <input class="input-bar-3" type="text" placeholder="GSTIN/PAN" name="gst">
+                            </div>
+
+                            <div class="space-holding">
+                            </div>
+                            
+                            <div>
+                                    <input class="input-bar" type="email" placeholder="Email" name="email">
+                            </div>
+
+                            <div class="space-holding">
+                            </div>
+    
+                            <div class="in-line">
+                                <input class="input-bar-4" type="num" placeholder="ISD Code" name="isd_code">
+                            
+                                <input class="input-bar-5" type="tel" placeholder="Phone Number" name="contact_number">
+                            </div>
+    
+                            <div class="space-holding">
+                            </div>
+    
+                            <textarea class="input-bar input-bar-2" id="feedback_great" placeholder="Head Office Address" name="corp_address" rows="3" ></textarea>
+                            
+    
+                            <div class="space-holding">
+                            </div>
+                            
+                            <div class="in-line">
+                                    <input class="input-bar-3" type="text" placeholder="City" name="city">
+                            
+                                <input class="input-bar-3" type="text" placeholder="State" name="state">
+                            </div>
+    
+                            <div class="space-holding">
+                            </div>
+    
+                            <div class="in-line">
+                                <input class="input-bar-3" type="text" placeholder="Country" name="country">
+                            
+                                <input class="input-bar-3" type="text" placeholder="Pincode/Zipcode" name="pincode">
+                            </div>
+
+                            <div class="space-holding">
+                            </div>
+
+
+                            <div>
+                                <label class="radio-inline">
+                                    <input name="testimonial" type="radio" value="Sell"/>
+                                        Sell only
+                                </label>
+                                    
+                                <label class="radio-inline">
+                                    <input name="testimonial" type="radio" value="buy"/>
+                                        Buy only
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input name="testimonial" type="radio" value="yes"/>
+                                        Both
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="form-group hidden">
+                        <label class="control-label " for="feedback_great">
+                                   Thank you so much!  Please leave your testimonial here:
+                        </label>
+                        <textarea class="form-control" cols="40" id="feedback_great" name="feedback_great" rows="10"></textarea>
+                    </div>
+                                 
+                    <div class="form-group hidden" id="thanks_anyway">
+                        <label class="control-label">
+                                   Both Payment Button
+                        </label>
+                    </div>				 
+    
+                    
+
+
+
+                    <div class="form-group">
+                        
+                    </div>
+                </form>								
+                            
+            <div>
+		</div>
+	</div>
+
+
+    <div class="row">
+    <div class="div-pic">
+        <div class="pic-col">
+            
+        </div>
+    </div>
+    
+    <div class="div-form">
+        <div class="form-col">
+            
+        </div>
+    </div>
+</div>
+
+
+<script src="jquery-3.6.0.js"></script>
+  <script src="conditional-field.js"></script>
+
+
+</body>
+</html>
