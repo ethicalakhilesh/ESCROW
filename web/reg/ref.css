@@ -1,0 +1,141 @@
+body    {
+    background-image: url("banner.png");
+    background-size:contain;
+}
+
+.p-title    {
+    color: red;
+}
+
+#card {
+    background-color: black;
+    width: 50%;
+    color:white;
+    border-radius: 10px;
+    padding: 0;
+    margin: auto;
+    box-shadow: 5px 5px 5px red;
+}
+
+#form-side  {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.column-1   {
+    float: left;
+    width: 50%;
+    /*height: 300px; /* Should be removed. Only for demonstration */
+}
+  
+.picture-col  {
+    width: 100%;
+    height: 100%;
+}
+  
+.column-2   {
+    text-align:left;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    /*height: 300px; /* Should be removed. Only for demonstration */
+}
+  
+.form-col {
+    width: 90%;
+    margin: auto;
+}
+
+.row    {
+    box-shadow: -5px -5px 5px black;
+    border-radius: 10px;
+}
+  
+.row:after  {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+* {
+    box-sizing: border-box;
+}
+
+.grey_color {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.input---bar{
+    width: 60%;
+    background-color:black;
+    border: 25px;
+    color: white;
+}
+.input-bar-6 {
+    width: 30%;
+    background-color:black;
+    border: 25px;
+    color: white;
+}
+
+.input-bar {
+    background-color:black;
+    border: 25px;
+    color: white;
+    width: 100%;
+}
+
+.input-bar-2 {
+    resize: none;
+}
+
+.input-bar-3 {
+    background-color:black;
+    border: 25px;
+    color: white;
+    width: 49%;
+}
+
+.input-bar-4 {
+    background-color:black;
+    border: 25px;
+    color: white;
+    width: 24%;
+}
+
+.input-bar-5 {
+    background-color:black;
+    border: 25px;
+    color: white;
+    width: 67%;
+}
+
+.in-line {
+    display: inline-block;
+}
+
+.select-dropdown    {
+    background-color: black;
+    color: white;
+}
+
+.space-holding  {
+    height: 15px;
+}
+
+.space-holding-2    {
+    height: 60px;
+}
+
+.small-space-holding    {
+    height:7px;
+}
+
+
+
+
+.hidden {
+    display: none;
+}
