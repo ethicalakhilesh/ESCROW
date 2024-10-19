@@ -31,4 +31,5 @@ jobs:
     with:
       PATH: ${{ inputs.PATH }}
       FAIL_ON: ${{ inputs.FAIL_ON }}
-    
+    env:
+      GITHUB_TOKEN: ${{ secrets.PRIVATE_WORKFLOWS }}
