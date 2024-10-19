@@ -1,5 +1,5 @@
 ---
-name: IAC
+name: Infrastructure_as_Code
 on:
   issues:
     types: [opened]
