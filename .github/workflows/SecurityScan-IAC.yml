@@ -1,0 +1,34 @@
+---
+name: IAC
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      FAIL_ON:
+        description: 'Fail on security level (e.g., high, medium)'
+        required: false
+        type: string
+      PATH:
+        description: 'Path to the file or directory to scan'
+        required: true
+        type: string
+        default: "./"
+
+jobs:
+  Performing_KICS_Scan:
+    permissions:
+      actions: read
+      issues: write
+      contents: read
+      pull-requests: write
+      security-events: write
+    uses: ethicalakhilesh/security/.github/workflows/infrastructure-as-code.yml@main
+    with:
+      PATH: ${{ inputs.PATH }}
+      FAIL_ON: ${{ inputs.FAIL_ON }}
+    
