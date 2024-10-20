@@ -13,7 +13,7 @@ on:
         description: 'Fail on security level (e.g., high, medium)'
         required: false
         type: string
-        default: ''
+        default: 'high'
       PATH:
         description: 'Path to the file or directory to scan'
         required: true
@@ -42,9 +42,9 @@ jobs:
         uses: Checkmarx/kics-github-action@v1.7.0
         with:
           path: ${{ inputs.PATH || './' }}
-          fail_on: ${{ inputs.FAIL_ON || '' }}
+          fail_on: ${{ inputs.FAIL_ON || 'high' }}
           output_path: results-dir
-          output_formats: 'sarif'
+          output_formats: 'sarif,json,html'
 
       - name: Upload SARIF file
         if: always()
