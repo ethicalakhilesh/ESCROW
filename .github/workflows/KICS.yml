@@ -1,73 +1,60 @@
 name: KICS Scan
 
 on:
-  issues:
-    types: [opened]
-
-  pull_request: 
-    types: [opened, synchronize]
+  push:
     branches:
       - main
-
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
-      FAIL_ON:
+      fail_on:
         description: 'The severity level to fail the scan (e.g., high, medium, low)'
         default: ''
         required: false  # Fail on is optional
-      PATH:
-        description: 'paths to a file or directories to scan, comma-separated list'
-        default: './'
-        required: true  # True on is not optional
-      EXCLUDE_PATH:
-        description: 'paths to a file or directories to exclude, comma-separated list'
-        required: false
-        default: './.github'
-    
+
 jobs:
   kics-scan:
-    permissions:
-      actions: read
-      issues: write
-      contents: read
-      pull-requests: write
-      security-events: write
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the source code
-      - name: Checkout source code
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Generate the results directory
-      - name: Generate results-dir
-        run: mkdir -p results-dir
-      
-      # Run KICS
-      - name: Start IaC Scan (KICS Scan)
-        uses: checkmarx/kics-github-action@v2.0.0
+      - name: Set up KICS
+        run: docker pull checkmarx/kics:latest  # Pull the latest KICS Docker image
+
+      - name: Run KICS scan
         id: kics-scan
-        continue-on-error: true
-        with:
-          path: ${{ github.event.inputs.PATH }}
-          fail_on: ${{ github.event.inputs.FAIL_ON }}
-          exclude_paths: ${{ github.event.inputs.EXCLUDE_PATH }}
-          output_formats: 'json,sarif,html,csv'
-          
-      # Upload SARIF file
-      - name: Upload SARIF file
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: results-dir/results.sarif
+        run: |
+          SCAN_PATH="./"
+          FAIL_ON=${{ github.event.inputs.fail_on || '' }}  # Read input or set to empty string
 
-      # Upload files to workflow run
+          # Create a directory for the KICS scan results
+          mkdir -p ./kics-results
+
+          # Run KICS with scan path and optional fail_on severity
+          docker run -v $(pwd):/src checkmarx/kics:latest scan \
+            --path $SCAN_PATH \
+            --report-formats sarif,json,html,csv \
+            --output-path /src/kics-results \
+            $(if [[ -n "$FAIL_ON" ]]; then echo "--fail-on $FAIL_ON"; fi)
+
+      - name: List KICS Result Files
+        run: ls -al ./kics-results  # Check if KICS generated the correct files
+
+      - name: Upload SARIF Report to Security Tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./kics-results/results.sarif
+
       - name: Upload KICS Scan Reports as Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: kics-reports
           path: |
-            ./results-dir/results.sarif
-            ./results-dir/results.json
-            ./results-dir/results.html
-            ./results-dir/results.csv
+            ./kics-results/results.sarif
+            ./kics-results/results.json
+            ./kics-results/results.html
+            ./kics-results/results.csv
