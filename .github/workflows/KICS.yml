@@ -1,0 +1,49 @@
+name: KICS Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  kics-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up KICS
+        run: |
+          docker pull checkmarx/kics:latest  # Pull the latest KICS Docker image
+
+      - name: Run KICS scan
+        id: kics-scan
+        run: |
+          # Set default values if inputs are not provided
+          FAIL_ON_ISSUES=${{ github.event.inputs.fail || 'false' }}
+          EXCLUDE_PATH=${{ github.event.inputs.exclude || '' }}
+          SCAN_PATH=${{ github.event.inputs.path || './' }}
+
+          # Run the KICS scan with optional parameters
+          docker run -v $(pwd):/src checkmarx/kics:latest scan \
+            --path $SCAN_PATH \
+            ${EXCLUDE_PATH:+--exclude-path $EXCLUDE_PATH} \
+            --report-formats sarif,json \
+            --output-path ./kics-results \
+            $(if [[ "$FAIL_ON_ISSUES" == "true" ]]; then echo "--fail-on high"; fi)
+
+      - name: Upload SARIF Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./kics-results/results.sarif
+
+      - name: Fail on High Severity Issues
+        if: steps.kics-scan.outcome == 'success' && inputs.fail == 'true'
+        run: |
+          echo "Failing build due to high severity issues"
+          exit 1
