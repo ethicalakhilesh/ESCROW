@@ -7,7 +7,12 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  workflow_dispatch:
+    inputs:
+      fail_on:
+        description: 'The severity level to fail the scan (e.g., high, medium, low)'
+        default: ''
+        required: false  # Fail on is optional
 
 jobs:
   kics-scan:
@@ -18,32 +23,32 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up KICS
-        run: |
-          docker pull checkmarx/kics:latest  # Pull the latest KICS Docker image
+        run: docker pull checkmarx/kics:latest  # Pull the latest KICS Docker image
 
       - name: Run KICS scan
         id: kics-scan
         run: |
-          # Set default values if inputs are not provided
-          FAIL_ON_ISSUES=${{ github.event.inputs.fail || 'false' }}
-          EXCLUDE_PATH=${{ github.event.inputs.exclude || '' }}
-          SCAN_PATH=${{ github.event.inputs.path || './' }}
+          SCAN_PATH="./"
+          FAIL_ON=${{ github.event.inputs.fail_on || '' }}  # Read input or set to empty string
 
-          # Run the KICS scan with optional parameters
+          # Run KICS with scan path and optional fail_on severity
           docker run -v $(pwd):/src checkmarx/kics:latest scan \
             --path $SCAN_PATH \
-            ${EXCLUDE_PATH:+--exclude-path $EXCLUDE_PATH} \
-            --report-formats sarif,json \
+            --report-formats sarif,json,html,csv \
             --output-path ./kics-results \
-            $(if [[ "$FAIL_ON_ISSUES" == "true" ]]; then echo "--fail-on high"; fi)
+            $(if [[ -n "$FAIL_ON" ]]; then echo "--fail-on $FAIL_ON"; fi)
 
-      - name: Upload SARIF Report
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Upload SARIF Report to Security Tab
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: ./kics-results/results.sarif
 
-      - name: Fail on High Severity Issues
-        if: steps.kics-scan.outcome == 'success' && inputs.fail == 'true'
-        run: |
-          echo "Failing build due to high severity issues"
-          exit 1
+      - name: Upload KICS Scan Reports as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: kics-reports
+          path: |
+            ./kics-results/results.sarif
+            ./kics-results/results.json
+            ./kics-results/results.html
+            ./kics-results/results.csv
