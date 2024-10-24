@@ -1,0 +1,60 @@
+name: KICS Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      fail_on:
+        description: 'The severity level to fail the scan (e.g., high, medium, low)'
+        default: ''
+        required: false  # Fail on is optional
+
+jobs:
+  kics-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up KICS
+        run: docker pull checkmarx/kics:latest  # Pull the latest KICS Docker image
+
+      - name: Run KICS scan
+        id: kics-scan
+        run: |
+          SCAN_PATH="./"
+          FAIL_ON=${{ github.event.inputs.fail_on || '' }}  # Read input or set to empty string
+
+          # Create a directory for the KICS scan results
+          mkdir -p ./kics-results
+
+          # Run KICS with scan path and optional fail_on severity
+          docker run -v $(pwd):/src checkmarx/kics:latest scan \
+            --path $SCAN_PATH \
+            --report-formats sarif,json,html,csv \
+            --output-path /src/kics-results \
+            $(if [[ -n "$FAIL_ON" ]]; then echo "--fail-on $FAIL_ON"; fi)
+
+      - name: List KICS Result Files
+        run: ls -al ./kics-results  # Check if KICS generated the correct files
+
+      - name: Upload SARIF Report to Security Tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./kics-results/results.sarif
+
+      - name: Upload KICS Scan Reports as Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: kics-reports
+          path: |
+            ./kics-results/results.sarif
+            ./kics-results/results.json
+            ./kics-results/results.html
+            ./kics-results/results.csv
