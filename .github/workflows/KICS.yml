@@ -49,9 +49,9 @@ jobs:
         id: kics-scan
         continue-on-error: true
         with:
-          path: ${{ input.PATH }}
-          fail_on: ${{ input.FAIL_ON }}
-          exclude_paths: ${{ EXCLUDE_PATH }}
+          path: ${{ github.event.inputs.PATH }}
+          fail_on: ${{ github.event.inputs.FAIL_ON }}
+          exclude_paths: ${{ github.event.inputs.EXCLUDE_PATH }}
           output_formats: 'json,sarif,html,csv'
           
       # Upload SARIF file
