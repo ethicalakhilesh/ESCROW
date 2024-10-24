@@ -1,0 +1,21 @@
+name: Static_Application_Security_Testing
+
+on: [push, pull_request]
+
+jobs:
+  snyk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Snyk
+        run: npm install -g snyk
+
+      - name: Run Snyk to generate SARIF
+        run: snyk test --all-sub-projects --sarif-file results.sarif
+      - name: Upload SARIF results
+        uses: actions/upload-artifact@v4
+        with:
+          name: snyk-results
+          path: results.sarif
