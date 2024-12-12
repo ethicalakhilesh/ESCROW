@@ -15,22 +15,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install  # Adjust based on your project setup (e.g., `yarn install`)
-
-      - name: Run Snyk SAST
+      - name: Run Synk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk code test --sarif-file-output=snyk-sast-results.sarif
-
+        with:
+          args: --sarif-file-output=snyk.sarif
+          
       - name: Upload SARIF Report
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: snyk-sast-results.sarif
+          sarif_file: snyk.sarif
