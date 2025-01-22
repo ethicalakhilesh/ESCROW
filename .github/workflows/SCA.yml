@@ -22,3 +22,6 @@ jobs:
         uses: endorlabs/github-action@v1.1.4
         with:
           namespace: "akhileshsharma"
+          api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
+          api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
+          enable_github_action_token: false
