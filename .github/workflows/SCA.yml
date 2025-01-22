@@ -1,5 +1,7 @@
 name: Endor Labs Example
-on: push
+on:
+  workflow_dispatch:
+  push:
 jobs:
   build-and-scan:
     permissions:
