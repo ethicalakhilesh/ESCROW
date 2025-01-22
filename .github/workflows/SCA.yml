@@ -32,4 +32,3 @@ jobs:
           namespace: "akhileshsharma"
           api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
           api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
-          enable_github_action_token: false
