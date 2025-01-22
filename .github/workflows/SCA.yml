@@ -32,3 +32,4 @@ jobs:
           namespace: "akhileshsharma"
           api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
           api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
+          sarif_file: true
