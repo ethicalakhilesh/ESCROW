@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
 jobs:
-  ci-commons-demo-scan:
+  ci-scan:
     permissions:
       id-token: write # Required for requesting the JWT
       contents: read  # Required by actions/checkout@v3 to checkout a private repository
