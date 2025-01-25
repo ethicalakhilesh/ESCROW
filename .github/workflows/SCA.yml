@@ -19,4 +19,4 @@ jobs:
       - name: Scan with Endor Labs
         uses: endorlabs/github-action@v1.1.4
         with:
-          namespace: "example"
+          namespace: "akhileshsharma"
