@@ -54,5 +54,6 @@ jobs:
         #with:
         #  sarif_file: snyk.sarif
       - name: current location
-        run: pwd
+        run: |
+          echo "$(pwd)"
           
