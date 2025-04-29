@@ -29,7 +29,7 @@
                         {
                             "physicalLocation": {
                                 "artifactLocation": {
-                                    "uri": "src/setup.yml"
+                                    "uri": "setup.yml"
                                 },
                                 "region": {
                                     "startLine": 4,
@@ -45,7 +45,7 @@
                             "id": 0,
                             "physicalLocation": {
                                 "artifactLocation": {
-                                    "uri": "src/setup.yml"
+                                    "uri": ""
                                 },
                                 "region": {
                                     "startLine": 4,
@@ -74,7 +74,7 @@
                         {
                             "physicalLocation": {
                                 "artifactLocation": {
-                                    "uri": "src/setup.yml"
+                                    "uri": ""
                                 },
                                 "region": {
                                     "startLine": 1,
@@ -90,7 +90,7 @@
                             "id": 0,
                             "physicalLocation": {
                                 "artifactLocation": {
-                                    "uri": "src/setup.yml"
+                                    "uri": ""
                                 },
                                 "region": {
                                     "startLine": 1,
@@ -107,7 +107,7 @@
                             "id": 1,
                             "physicalLocation": {
                                 "artifactLocation": {
-                                    "uri": "src/setup.yml"
+                                    "uri": ""
                                 },
                                 "region": {
                                     "startLine": 2,
