@@ -1,0 +1,131 @@
+{
+    "version": "2.1.0",
+    "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "organization": "GitGuardian",
+                    "name": "ggshield",
+                    "informationUri": "https://github.com/GitGuardian/ggshield",
+                    "version": "1.38.1"
+                },
+                "extensions": [
+                    {
+                        "name": "secret",
+                        "version": "2.137.0"
+                    }
+                ]
+            },
+            "results": [
+                {
+                    "ruleId": "Generic Password",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Generic Password.\nMatches: [password](0)",
+                        "markdown": "Secret detected: Generic Password\nMatches:\n- [password](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 14,
+                                    "endLine": 4,
+                                    "endColumn": 49
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 14,
+                                    "endLine": 4,
+                                    "endColumn": 49
+                                }
+                            },
+                            "message": {
+                                "text": "password"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "53895a062e21990453ea0cb8763c09fc64fd180342bbaf2b3f8cd10bcab1eee9"
+                    }
+                },
+                {
+                    "ruleId": "AWS Keys",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: AWS Keys.\nMatches: [client_id](0), [client_secret](1)",
+                        "markdown": "Secret detected: AWS Keys\nMatches:\n- [client_id](0)\n- [client_secret](1)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 13,
+                                    "endLine": 2,
+                                    "endColumn": 57
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 13,
+                                    "endLine": 1,
+                                    "endColumn": 33
+                                }
+                            },
+                            "message": {
+                                "text": "client_id"
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 57
+                                }
+                            },
+                            "message": {
+                                "text": "client_secret"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "8c8db0e9cc598b3677468a3206c27825e9d7d4e06c53b881b84edf079e1a70bc"
+                    }
+                }
+            ]
+        }
+    ]
+}
