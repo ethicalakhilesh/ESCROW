@@ -33,9 +33,7 @@
                                 },
                                 "region": {
                                     "startLine": 4,
-                                    "startColumn": 14,
-                                    "endLine": 4,
-                                    "endColumn": 49
+                                    "endLine": 4
                                 }
                             }
                         }
