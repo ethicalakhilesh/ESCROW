@@ -16,14 +16,7 @@ def convert_to_sarif(input_json):
                         "rules": []  # Rules will be populated dynamically if needed
                     }
                 },
-                "results": [],
-                "invocations": [
-                    {
-                        "executionSuccessful": True,
-                        "startTimeUtc": datetime.now().isoformat(),
-                        "endTimeUtc": datetime.now().isoformat(),
-                    }
-                ]
+                "results": []
             }
         ]
     }
