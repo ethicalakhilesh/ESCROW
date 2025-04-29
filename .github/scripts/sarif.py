@@ -41,7 +41,7 @@ def convert_to_sarif(input_json):
             location = {
                 "physicalLocation": {
                     "artifactLocation": {
-                        "uri": result.get("filename", "")
+                        "uri": result.get("filename", "").replace("\\\\", "\\")
                     },
                     "region": {
                         "startLine": int(line_number),
