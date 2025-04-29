@@ -5,10 +5,10 @@
         {
             "tool": {
                 "driver": {
-                    "organization": "GitGuardian",
-                    "name": "ggshield",
-                    "informationUri": "https://github.com/GitGuardian/ggshield",
-                    "version": "1.38.1"
+                    "organization": "ethicalakhilesh",
+                    "name": "sample-secrets",
+                    "informationUri": "https://github.com/ethicalakhilesh/sample",
+                    "version": "0.1"
                 },
                 "extensions": [
                     {
@@ -47,9 +47,7 @@
                                 },
                                 "region": {
                                     "startLine": 4,
-                                    "startColumn": 14,
-                                    "endLine": 4,
-                                    "endColumn": 49
+                                    "endLine": 4
                                 }
                             },
                             "message": {
