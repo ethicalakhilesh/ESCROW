@@ -29,7 +29,6 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                                 result_entry["message"]["text"] = rule_type
                                 result_entry["message"]["markdown"] = rule_type
                                 result_entry["locations"][0]["physicalLocation"]["artifactLocation"]["uri"] = filename
-                                result_entry["locations"][0]["physicalLocation"]["secrets"] = secret
                                 result_entry["locations"][0]["physicalLocation"]["region"]["startLine"] = line_number
                                 result_entry["locations"][0]["physicalLocation"]["region"]["startColumn"] = start_index
                                 result_entry["locations"][0]["physicalLocation"]["region"]["endLine"] = line_number
