@@ -59,8 +59,7 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                 "results": output_results  # Embedding output_results under "key3"
                 }
             ]
-        }
-"""
+        }"""
         # Save results to the output file
         with open(output_json_file, 'w') as out_file:
             json.dump(final_output, out_file, indent=4)
