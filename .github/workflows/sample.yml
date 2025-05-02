@@ -1,4 +1,4 @@
-name: Secrets (detect-secrets)
+name: Sample
 
 on: [workflow_dispatch, workflow_call]
 
