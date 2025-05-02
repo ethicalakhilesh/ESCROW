@@ -17,7 +17,9 @@ def find_secret_indices(input_json_file, output_json_file):
                     for line_number, line in enumerate(f, start=1):
                         start_index = line.find(secret)
                         if start_index != -1:
+                            start_index = start_index + 1  # Adjusting to make it 1-based index
                             end_index = start_index + len(secret) - 1
+                            
                             for rule_type in types:
                                 output_results.append({
                                     "ruleId": rule_type,
@@ -32,6 +34,7 @@ def find_secret_indices(input_json_file, output_json_file):
                                                 "artifactLocation": {
                                                     "uri": filename
                                                 },
+                                                "secrets": secret,
                                                 "region": {
                                                     "startLine": line_number,
                                                     "startColumn": start_index,
