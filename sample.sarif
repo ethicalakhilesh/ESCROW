@@ -10,202 +10,491 @@
             "rules": []
           }
         },
-            "results":
-    [
-    {
-        "ruleId": "Hex High Entropy String",
-        "level": "error",
-        "message": {
-            "text": "Hex High Entropy String",
-            "markdown": "Hex High Entropy String"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": ".git/FETCH_HEAD"
+            "results":[
+                {
+                    "ruleId": "Hex High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Hex High Entropy String",
+                        "markdown": "Hex High Entropy String"
                     },
-                    "secrets": "217ec47cc5310b6f9c07669c0b25eeff62264edc",
-                    "region": {
-                        "startLine": 1,
-                        "startColumn": 1,
-                        "endLine": 1,
-                        "endColumn": 40
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "Secret Keyword",
-        "level": "error",
-        "message": {
-            "text": "Secret Keyword",
-            "markdown": "Secret Keyword"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "java/src/Main.java"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": ".git/FETCH_HEAD"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 1,
+                                    "endLine": 1,
+                                    "endColumn": 40
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
                     },
-                    "secrets": "dsbjbsgiubwefihbewbvfwufvhvfyyevhvefou",
-                    "region": {
-                        "startLine": 4,
-                        "startColumn": 12,
-                        "endLine": 4,
-                        "endColumn": 49
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "AWS Access Key",
-        "level": "error",
-        "message": {
-            "text": "AWS Access Key",
-            "markdown": "AWS Access Key"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "java/src/Main.java"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 12,
+                                    "endLine": 4,
+                                    "endColumn": 49
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Hex High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Hex High Entropy String",
+                        "markdown": "Hex High Entropy String"
                     },
-                    "secrets": "AKIAIOSFODNNIUBAMHAE",
-                    "region": {
-                        "startLine": 1,
-                        "startColumn": 13,
-                        "endLine": 1,
-                        "endColumn": 32
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "AWS Access Key",
-        "level": "error",
-        "message": {
-            "text": "AWS Access Key",
-            "markdown": "AWS Access Key"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 28,
+                                    "startColumn": 33,
+                                    "endLine": 28,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
                     },
-                    "secrets": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXErkLEKex",
-                    "region": {
-                        "startLine": 2,
-                        "startColumn": 17,
-                        "endLine": 2,
-                        "endColumn": 56
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "Base64 High Entropy String",
-        "level": "error",
-        "message": {
-            "text": "Base64 High Entropy String",
-            "markdown": "Base64 High Entropy String"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 28,
+                                    "startColumn": 33,
+                                    "endLine": 28,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
                     },
-                    "secrets": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXErkLEKex",
-                    "region": {
-                        "startLine": 2,
-                        "startColumn": 17,
-                        "endLine": 2,
-                        "endColumn": 56
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "Secret Keyword",
-        "level": "error",
-        "message": {
-            "text": "Secret Keyword",
-            "markdown": "Secret Keyword"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 52,
+                                    "startColumn": 33,
+                                    "endLine": 52,
+                                    "endColumn": 70
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "AWS Access Key",
+                        "markdown": "AWS Access Key"
                     },
-                    "secrets": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXErkLEKex",
-                    "region": {
-                        "startLine": 2,
-                        "startColumn": 17,
-                        "endLine": 2,
-                        "endColumn": 56
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "Secret Keyword",
-        "level": "error",
-        "message": {
-            "text": "Secret Keyword",
-            "markdown": "Secret Keyword"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 76,
+                                    "startColumn": 33,
+                                    "endLine": 76,
+                                    "endColumn": 52
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
                     },
-                    "secrets": "ksjdnijqebci2be872be2biub2eicub2ebc",
-                    "region": {
-                        "startLine": 4,
-                        "startColumn": 14,
-                        "endLine": 4,
-                        "endColumn": 48
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "ruleId": "Secret Keyword",
-        "level": "error",
-        "message": {
-            "text": "Secret Keyword",
-            "markdown": "Secret Keyword"
-        },
-        "locations": [
-            {
-                "physicalLocation": {
-                    "artifactLocation": {
-                        "uri": "src/setup.yml"
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 76,
+                                    "startColumn": 33,
+                                    "endLine": 76,
+                                    "endColumn": 52
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Base64 High Entropy String",
+                        "markdown": "Base64 High Entropy String"
                     },
-                    "secrets": "ehciuwcehui2cb82bc2uizecb8ziubec",
-                    "region": {
-                        "startLine": 5,
-                        "startColumn": 10,
-                        "endLine": 5,
-                        "endColumn": 41
-                    }
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 100,
+                                    "startColumn": 33,
+                                    "endLine": 100,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 100,
+                                    "startColumn": 33,
+                                    "endLine": 100,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Base64 High Entropy String",
+                        "markdown": "Base64 High Entropy String"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 124,
+                                    "startColumn": 33,
+                                    "endLine": 124,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 124,
+                                    "startColumn": 33,
+                                    "endLine": 124,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Base64 High Entropy String",
+                        "markdown": "Base64 High Entropy String"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 148,
+                                    "startColumn": 33,
+                                    "endLine": 148,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 148,
+                                    "startColumn": 33,
+                                    "endLine": 148,
+                                    "endColumn": 72
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 172,
+                                    "startColumn": 33,
+                                    "endLine": 172,
+                                    "endColumn": 67
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "sample.sarif"
+                                },
+                                "region": {
+                                    "startLine": 196,
+                                    "startColumn": 33,
+                                    "endLine": 196,
+                                    "endColumn": 64
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "AWS Access Key",
+                        "markdown": "AWS Access Key"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 13,
+                                    "endLine": 1,
+                                    "endColumn": 32
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "AWS Access Key",
+                        "markdown": "AWS Access Key"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 56
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Base64 High Entropy String",
+                        "markdown": "Base64 High Entropy String"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 56
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 56
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 14,
+                                    "endLine": 4,
+                                    "endColumn": 48
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret Keyword",
+                        "markdown": "Secret Keyword"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 5,
+                                    "startColumn": 10,
+                                    "endLine": 5,
+                                    "endColumn": 41
+                                }
+                            }
+                        }
+                    ]
                 }
-            }
-        ]
-    }
-]
-    
+            ]
         }
     ]
 }
