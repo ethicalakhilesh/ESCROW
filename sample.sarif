@@ -10,7 +10,7 @@
             "rules": []
           }
         },
-            "results": [
+            "results":
     [
     {
         "ruleId": "Hex High Entropy String",
