@@ -34,7 +34,6 @@ def find_secret_indices(input_json_file, output_json_file):
                                                 "artifactLocation": {
                                                     "uri": filename
                                                 },
-                                                "secrets": secret,
                                                 "region": {
                                                     "startLine": line_number,
                                                     "startColumn": start_index,
