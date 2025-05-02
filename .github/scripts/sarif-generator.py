@@ -1,13 +1,12 @@
 import json
 import copy
 
-def find_secret_indices(input_json_file, output_json_file, format_json_file, wrapper_template_file):
+def find_secret_indices(input_json_file, output_json_file, template_file):
     try:
-        with open(format_json_file, 'r') as fmt_file:
-            format_template = json.load(fmt_file)
-
-        with open(wrapper_template_file, 'r') as wrap_file:
-            sarif_wrapper = json.load(wrap_file)
+        with open(template_file, 'r') as tmpl_file:
+            sarif_template = json.load(tmpl_file)
+            format_template = sarif_template["result"]
+            sarif_wrapper = sarif_template["wrapper"]
 
         with open(input_json_file, 'r') as file:
             data = json.load(file)
@@ -58,7 +57,6 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file, wra
 # Example usage
 input_json_file = "report.json"
 output_json_file = "secrets.sarif"
-format_json_file = "./.github/scripts/result-template.json"
-wrapper_template_file = "./.github/scripts/sarif-wrapper.json"
+template_file = "./.github/scripts/sarif-template.json"
 
-find_secret_indices(input_json_file, output_json_file, format_json_file, wrapper_template_file)
+find_secret_indices(input_json_file, output_json_file, template_file)
