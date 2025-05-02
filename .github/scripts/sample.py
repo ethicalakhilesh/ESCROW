@@ -10,6 +10,7 @@ def find_secret_indices(input_json_file, output_json_file):
         for entry in data["results"]:
             filename = entry["filename"]
             secret = entry["secrets"]
+            types = entry["types"]
 
             try:
                 with open(filename, 'r') as f:
@@ -17,16 +18,31 @@ def find_secret_indices(input_json_file, output_json_file):
                         start_index = line.find(secret)
                         if start_index != -1:
                             end_index = start_index + len(secret) - 1
-                            output_results.append({
-                                "filename": filename,
-                                "secrets": secret,
-                                "region": {
-                                    "startLine": line_number,
-                                    "startColumn": start_index,
-                                    "endLine": line_number,
-                                    "endColumn": end_index
-                                }
-                            })
+                            for rule_type in types:
+                                output_results.append({
+                                    "ruleId": rule_type,
+                                    "level": "error",
+                                    "message": {
+                                        "text": rule_type,
+                                        "markdown": rule_type
+                                    },
+                                    "locations": [
+                                        {
+                                            "physicalLocation": {
+                                                "artifactLocation": {
+                                                    "uri": filename
+                                                },
+                                                "secrets": secret,
+                                                "region": {
+                                                    "startLine": line_number,
+                                                    "startColumn": start_index,
+                                                    "endLine": line_number,
+                                                    "endColumn": end_index
+                                                }
+                                            }
+                                        }
+                                    ]
+                                })
             except FileNotFoundError:
                 print(f"Error: File '{filename}' not found.")
             except Exception as e:
