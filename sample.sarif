@@ -10,29 +10,46 @@
             "rules": []
           }
         },
-        "results": [
-          {
-            "ruleId": "Secret Keyword",
-            "level": "error",
-            "message": {
-              "text": "secret Keyword found in the code"
-            },
-            "locations": [
-              {
-                "physicalLocation": {
-                  "artifactLocation": {
-                    "uri": "java/src/Main.java",
-                    "index": 0
-                  },
-                  "region": {
-                    "startLine": 4
-                  }
+            "results": [
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword.\nMatches: [password](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches:\n- [password](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "java/src/Main.java"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "endLine": 4
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "java/src/Main.java"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "endLine": 4
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ]
                 }
-              }
-            ],
-            "ruleIndex": 0
-          }
-        ]
-      }
+            ]
+        }
     ]
-  }
+}
