@@ -42,7 +42,7 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                 print(f"An error occurred while processing '{filename}': {e}")
 
         # Wrapping output_results under a custom JSON key
-        final_output = f"""
+        final_output = """
         {
             "version": "2.1.0",
             "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
