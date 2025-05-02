@@ -58,7 +58,7 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file, wra
 # Example usage
 input_json_file = "report.json"
 output_json_file = "secrets.sarif"
-format_json_file = "./.github/scripts/sarif-result-template.json"
+format_json_file = "./.github/scripts/result-template.json"
 wrapper_template_file = "./.github/scripts/sarif-wrapper.json"
 
 find_secret_indices(input_json_file, output_json_file, format_json_file, wrapper_template_file)
