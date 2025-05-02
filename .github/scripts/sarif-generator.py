@@ -42,12 +42,25 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                 print(f"An error occurred while processing '{filename}': {e}")
 
         # Wrapping output_results under a custom JSON key
-        final_output = {
-            "key1": "value1",
-            "key2": "value2",
-            "key3": output_results  # Embedding output_results under "key3"
+        final_output = f"""
+        {
+            "version": "2.1.0",
+            "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+            "runs": [
+            {
+                "tool": {
+                    "driver": {
+                        "organization": "Yelp",
+                        "name": "detect-secrets",
+                        "informationUri": "https://github.com/Yelp/detect-secrets",
+                        "version": "1.5.0"
+                    }
+                },
+                "results": output_results  # Embedding output_results under "key3"
+                }
+            ]
         }
-
+"""
         # Save results to the output file
         with open(output_json_file, 'w') as out_file:
             json.dump(final_output, out_file, indent=4)
