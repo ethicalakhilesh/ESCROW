@@ -1,14 +1,18 @@
 import json
+import copy
 
-def find_secret_indices(input_json_file, output_json_file, format_json_file):
+def find_secret_indices(input_json_file, output_json_file, format_json_file, wrapper_template_file):
     try:
         with open(format_json_file, 'r') as fmt_file:
             format_template = json.load(fmt_file)
 
+        with open(wrapper_template_file, 'r') as wrap_file:
+            sarif_wrapper = json.load(wrap_file)
+
         with open(input_json_file, 'r') as file:
             data = json.load(file)
 
-        output_results = []
+        results = []
 
         for entry in data["results"]:
             filename = entry["filename"]
@@ -24,7 +28,7 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                             end_index = start_index + len(secret) - 1
 
                             for rule_type in types:
-                                result_entry = format_template.copy()  # Use the JSON template
+                                result_entry = copy.deepcopy(format_template)
                                 result_entry["ruleId"] = rule_type
                                 result_entry["message"]["text"] = rule_type
                                 result_entry["message"]["markdown"] = rule_type
@@ -34,16 +38,18 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
                                 result_entry["locations"][0]["physicalLocation"]["region"]["endLine"] = line_number
                                 result_entry["locations"][0]["physicalLocation"]["region"]["endColumn"] = end_index
 
-                                output_results.append(result_entry)
+                                results.append(result_entry)
 
             except FileNotFoundError:
                 print(f"Error: File '{filename}' not found.")
             except Exception as e:
                 print(f"An error occurred while processing '{filename}': {e}")
 
-        # Save results to the output file
+        # Inject results into SARIF wrapper
+        sarif_wrapper["runs"][0]["results"] = results
+
         with open(output_json_file, 'w') as out_file:
-            json.dump(output_results, out_file, indent=4)
+            json.dump(sarif_wrapper, out_file, indent=4)
         print(f"Results saved to '{output_json_file}'.")
 
     except Exception as e:
@@ -52,6 +58,7 @@ def find_secret_indices(input_json_file, output_json_file, format_json_file):
 # Example usage
 input_json_file = "report.json"
 output_json_file = "secrets.sarif"
-format_json_file = "./.github/scripts/sarif-format.json"
+format_json_file = "./.github/scripts/sarif-result-template.json"
+wrapper_template_file = "./.github/scripts/sarif-wrapper.json"
 
-find_secret_indices(input_json_file, output_json_file, format_json_file)
+find_secret_indices(input_json_file, output_json_file, format_json_file, wrapper_template_file)
