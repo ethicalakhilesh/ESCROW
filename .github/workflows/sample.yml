@@ -35,6 +35,11 @@ jobs:
           run: |
             python .github/scripts/sarif-generator.py  # Replace with the path to your Python file
 
+        - name: know more
+          run: |
+            ls -a
+            cat ./secrets.sarif
+        
         - name: Upload SARIF report as Artifacts
           uses: actions/upload-artifact@v4
           with:
