@@ -2,10 +2,10 @@ import json
 import hashlib
 
 # Load input and output templates
-with open('/.github/scripts/input-pattern.json') as f:
+with open('report.json') as f:
     input_data = json.load(f)
 
-with open('/.github/scripts/output-format.json') as f:
+with open('./.github/scripts/output-format.json') as f:
     output_template = json.load(f)
 
 # Initialize results list
