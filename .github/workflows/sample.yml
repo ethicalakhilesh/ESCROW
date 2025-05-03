@@ -38,7 +38,7 @@ jobs:
         - name: know more
           run: |
             ls -a
-            cat ./secrets.sarif
+            cat ./results.sarif
         
         # - name: Upload SARIF report as Artifacts
         #   uses: actions/upload-artifact@v4
