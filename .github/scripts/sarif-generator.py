@@ -22,8 +22,8 @@ for item in input_data['results']:
         end_column = start_column + len(secret_content) - 1
 
         # Compute partial fingerprint
-        md5_hash = hashlib.md5(secret_content.encode()).hexdigest()
-        sha256_hash = hashlib.sha256(md5_hash.encode()).hexdigest()
+        # md5_hash = hashlib.md5(secret_content.encode()).hexdigest()
+        # sha256_hash = hashlib.sha256(md5_hash.encode()).hexdigest()
 
         result = {
             "ruleId": secret_type,
@@ -46,10 +46,10 @@ for item in input_data['results']:
                         }
                     }
                 }
-            ],
-            "partialFingerprints": {
-                "secret/v1": sha256_hash
-            }
+            ] #,
+            # "partialFingerprints": {
+            #     "secret/v1": sha256_hash
+            # }
         }
 
         converted_results.append(result)
