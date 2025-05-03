@@ -1,91 +1,64 @@
 import json
 import hashlib
 
-BLOCK_SIZE = 20
+# Load input and output templates
+with open('/.github/scripts/input-pattern.json') as f:
+    input_data = json.load(f)
 
-def normalize_line(line):
-    return line.replace('\r\n', '\n').replace('\r', '\n')
+with open('/.github/scripts/output-format.json') as f:
+    output_template = json.load(f)
 
-def compute_rolling_hash(line):
-    cleaned = ''.join(c for c in line if c not in (' ', '\t'))
-    block = cleaned[:BLOCK_SIZE].ljust(BLOCK_SIZE, '\0')
-    return hashlib.sha256(block.encode('utf-8')).hexdigest()
+# Initialize results list
+converted_results = []
 
-def find_secret_indices(input_json_file, output_json_file, template_file):
-    try:
-        with open(template_file, 'r') as tmpl_file:
-            sarif_template = json.load(tmpl_file)
-            sarif_wrapper = sarif_template["runs"][0]
+# Loop over each entry in input data
+for item in input_data['results']:
+    filename = item['filename']
+    for secret_type in item['types']:
+        secret_content = item['secrets']
+        line_number = int(list(item['lines'].keys())[0])
+        line_content = list(item['lines'].values())[0]
+        start_column = line_content.find(secret_content) + 1  # +1 to convert to 1-based indexing
+        end_column = start_column + len(secret_content) - 1
 
-        with open(input_json_file, 'r') as file:
-            data = json.load(file)
+        # Compute partial fingerprint
+        md5_hash = hashlib.md5(secret_content.encode()).hexdigest()
+        sha256_hash = hashlib.sha256(md5_hash.encode()).hexdigest()
 
-        results = []
+        result = {
+            "ruleId": secret_type,
+            "level": "error",
+            "message": {
+                "text": secret_type,
+                "markdown": secret_type
+            },
+            "locations": [
+                {
+                    "physicalLocation": {
+                        "artifactLocation": {
+                            "uri": filename
+                        },
+                        "region": {
+                            "startLine": line_number,
+                            "startColumn": start_column,
+                            "endLine": line_number,
+                            "endColumn": end_column
+                        }
+                    }
+                }
+            ],
+            "partialFingerprints": {
+                "secret/v1": sha256_hash
+            }
+        }
 
-        for entry in data["results"]:
-            filename = entry["filename"]
-            secret = entry["secrets"]
-            types = entry["types"]
+        converted_results.append(result)
 
-            try:
-                with open(filename, 'r') as f:
-                    lines = f.readlines()
-                    for line_number, line in enumerate(lines, start=1):
-                        normalized_line = normalize_line(line)
-                        start_index = normalized_line.find(secret)
-                        if start_index != -1:
-                            start_index = start_index + 1  # Make 1-based index
-                            end_index = start_index + len(secret) - 1
+# Assign converted results to the output template
+output_template['runs'][0]['results'] = converted_results
 
-                            hash_value = compute_rolling_hash(normalized_line)
+# Save the output
+with open('mapped-output.json', 'w') as f:
+    json.dump(output_template, f, indent=4)
 
-                            for rule_type in types:
-                                result_entry = {
-                                    "ruleId": rule_type,
-                                    "level": "error",
-                                    "message": {
-                                        "text": rule_type,
-                                        "markdown": rule_type
-                                    },
-                                    "locations": [
-                                        {
-                                            "physicalLocation": {
-                                                "artifactLocation": {
-                                                    "uri": filename
-                                                },
-                                                "region": {
-                                                    "startLine": line_number,
-                                                    "startColumn": start_index,
-                                                    "endLine": line_number,
-                                                    "endColumn": end_index
-                                                }
-                                            }
-                                        }
-                                    ],
-                                    "partialFingerprints": {
-                                        "secret/v1": hash_value
-                                    }
-                                }
-
-                                results.append(result_entry)
-
-            except FileNotFoundError:
-                print(f"Error: File '{filename}' not found.")
-            except Exception as e:
-                print(f"An error occurred while processing '{filename}': {e}")
-
-        sarif_wrapper["results"] = results
-
-        with open(output_json_file, 'w') as out_file:
-            json.dump(sarif_template, out_file, indent=4)
-        print(f"Results saved to '{output_json_file}'.")
-
-    except Exception as e:
-        print(f"Error processing JSON file: {e}")
-
-# Example usage
-input_json_file = "report.json"
-output_json_file = "results.sarif"
-template_file = "./.github/scripts/sarif-template.json"
-
-find_secret_indices(input_json_file, output_json_file, template_file)
+print("Mapping complete. Output written to 'mapped-output.json'")
