@@ -1,7 +1,15 @@
 import json
 import hashlib
 
-BLOCK_SIZE = 64
+BLOCK_SIZE = 20
+
+def normalize_line(line):
+    return line.replace('\r\n', '\n').replace('\r', '\n')
+
+def compute_rolling_hash(line):
+    cleaned = ''.join(c for c in line if c not in (' ', '\t'))
+    block = cleaned[:BLOCK_SIZE].ljust(BLOCK_SIZE, '\0')
+    return hashlib.sha256(block.encode('utf-8')).hexdigest()
 
 def find_secret_indices(input_json_file, output_json_file, template_file):
     try:
@@ -20,14 +28,16 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
             types = entry["types"]
 
             try:
-                file_hashes = hash_file_contents(filename)
-
                 with open(filename, 'r') as f:
-                    for line_number, line in enumerate(f, start=1):
-                        start_index = line.find(secret)
+                    lines = f.readlines()
+                    for line_number, line in enumerate(lines, start=1):
+                        normalized_line = normalize_line(line)
+                        start_index = normalized_line.find(secret)
                         if start_index != -1:
                             start_index = start_index + 1  # Make 1-based index
                             end_index = start_index + len(secret) - 1
+
+                            hash_value = compute_rolling_hash(normalized_line)
 
                             for rule_type in types:
                                 result_entry = {
@@ -53,7 +63,7 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
                                         }
                                     ],
                                     "partialFingerprints": {
-                                        "secret/v1": file_hashes[line_number - 1] if line_number - 1 < len(file_hashes) else ""
+                                        "secret/v1": hash_value
                                     }
                                 }
 
@@ -64,7 +74,6 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
             except Exception as e:
                 print(f"An error occurred while processing '{filename}': {e}")
 
-        # Inject results into SARIF wrapper
         sarif_wrapper["results"] = results
 
         with open(output_json_file, 'w') as out_file:
@@ -73,24 +82,6 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
 
     except Exception as e:
         print(f"Error processing JSON file: {e}")
-
-
-def hash_file_contents(filename):
-    hashes = []
-    try:
-        with open(filename, 'r', encoding='utf-8', errors='ignore') as file:
-            lines = file.read().replace('\r\n', '\n').replace('\r', '\n').split('\n')
-            lines.append('-1')
-            lines.extend(['\0'] * BLOCK_SIZE)
-
-            for line in lines:
-                normalized_line = ''.join(c for c in line if c not in [' ', '\t'])
-                snippet = normalized_line[:BLOCK_SIZE].ljust(BLOCK_SIZE, '\0')
-                line_hash = hashlib.sha256(snippet.encode('utf-8')).hexdigest()
-                hashes.append(line_hash)
-    except Exception as e:
-        print(f"Failed to hash file '{filename}': {e}")
-    return hashes
 
 # Example usage
 input_json_file = "report.json"
