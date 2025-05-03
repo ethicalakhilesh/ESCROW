@@ -1,4 +1,7 @@
 import json
+import hashlib
+
+BLOCK_SIZE = 64
 
 def find_secret_indices(input_json_file, output_json_file, template_file):
     try:
@@ -17,6 +20,8 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
             types = entry["types"]
 
             try:
+                file_hashes = hash_file_contents(filename)
+
                 with open(filename, 'r') as f:
                     for line_number, line in enumerate(f, start=1):
                         start_index = line.find(secret)
@@ -46,7 +51,10 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
                                                 }
                                             }
                                         }
-                                    ]
+                                    ],
+                                    "partialFingerprints": {
+                                        "secret/v1": file_hashes[line_number - 1] if line_number - 1 < len(file_hashes) else ""
+                                    }
                                 }
 
                                 results.append(result_entry)
@@ -65,6 +73,24 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
 
     except Exception as e:
         print(f"Error processing JSON file: {e}")
+
+
+def hash_file_contents(filename):
+    hashes = []
+    try:
+        with open(filename, 'r', encoding='utf-8', errors='ignore') as file:
+            lines = file.read().replace('\r\n', '\n').replace('\r', '\n').split('\n')
+            lines.append('-1')
+            lines.extend(['\0'] * BLOCK_SIZE)
+
+            for line in lines:
+                normalized_line = ''.join(c for c in line if c not in [' ', '\t'])
+                snippet = normalized_line[:BLOCK_SIZE].ljust(BLOCK_SIZE, '\0')
+                line_hash = hashlib.sha256(snippet.encode('utf-8')).hexdigest()
+                hashes.append(line_hash)
+    except Exception as e:
+        print(f"Failed to hash file '{filename}': {e}")
+    return hashes
 
 # Example usage
 input_json_file = "report.json"
