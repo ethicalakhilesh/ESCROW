@@ -58,7 +58,7 @@ for item in input_data['results']:
 output_template['runs'][0]['results'] = converted_results
 
 # Save the output
-with open('mapped-output.json', 'w') as f:
+with open('results.sarif', 'w') as f:
     json.dump(output_template, f, indent=4)
 
 print("Mapping complete. Output written to 'mapped-output.json'")
