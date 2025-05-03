@@ -85,7 +85,7 @@ def find_secret_indices(input_json_file, output_json_file, template_file):
 
 # Example usage
 input_json_file = "report.json"
-output_json_file = "secrets.sarif"
+output_json_file = "results.sarif"
 template_file = "./.github/scripts/sarif-template.json"
 
 find_secret_indices(input_json_file, output_json_file, template_file)
