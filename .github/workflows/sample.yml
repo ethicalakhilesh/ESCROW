@@ -48,6 +48,19 @@ jobs:
               ./results.sarif
             retention-days: 1
 
+    upload-Sarif:
+        name: Analyzing for Secrets
+
+        permissions:
+            actions: read # for actions/checkout to fetch code
+            contents: read # for actions/checkout to fetch code
+            pull-requests: read
+
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout Source Code
+          uses: actions/checkout@v4
         - name: Upload SARIF Report to Security Tab
           uses: github/codeql-action/upload-sarif@v3
           with:
