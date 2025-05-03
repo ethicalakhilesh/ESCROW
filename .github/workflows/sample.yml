@@ -41,7 +41,7 @@ jobs:
         - name: Upload SARIF report as Artifacts
           uses: actions/upload-artifact@v4
           with:
-            name: sarif-reports
+            name: results.sarif
             path: |
               ./results.sarif
             retention-days: 1
