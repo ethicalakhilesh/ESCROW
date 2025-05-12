@@ -1,5 +1,7 @@
 name: Endor Labs Example
+
 on: workflow_dispatch
+
 jobs:
   build-and-scan:
     permissions:
