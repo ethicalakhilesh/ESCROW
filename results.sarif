@@ -1,0 +1,738 @@
+{
+    "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "organization": "Yelp",
+                    "name": "Detect Secret (Yelp)",
+                    "version": "1.5.0",
+                    "informationUri": "https://github.com/Yelp/detect-secrets"
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "Basic Auth Credentials",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Basic Auth Credentials\nMatches: [Basic Auth Credentials](0)",
+                        "markdown": "Secret detected: Basic Auth Credentials\nMatches: [Basic Auth Credentials](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": ".env"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 27,
+                                    "endLine": 2,
+                                    "endColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": ".env"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 27,
+                                    "endLine": 2,
+                                    "endColumn": 30
+                                }
+                            },
+                            "message": {
+                                "text": "Basic Auth Credentials"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "secrets.json"
+                                },
+                                "region": {
+                                    "startLine": 3,
+                                    "startColumn": 23,
+                                    "endLine": 3,
+                                    "endColumn": 50
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "secrets.json"
+                                },
+                                "region": {
+                                    "startLine": 3,
+                                    "startColumn": 23,
+                                    "endLine": 3,
+                                    "endColumn": 50
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "bc6781b494a3876e54fcc47383fcd59634b83ffd98697494b4f48dfc07401333"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 22,
+                                    "endLine": 4,
+                                    "endColumn": 59
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 22,
+                                    "endLine": 4,
+                                    "endColumn": 59
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "1783fccc2b2d93a94f9cee3d5076a03d3baee56fa12ab403f41a72686b6e1e3c"
+                    }
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Base64 High Entropy String\nMatches: [Base64 High Entropy String](0)",
+                        "markdown": "Secret detected: Base64 High Entropy String\nMatches: [Base64 High Entropy String](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 8,
+                                    "startColumn": 17,
+                                    "endLine": 8,
+                                    "endColumn": 50
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 8,
+                                    "startColumn": 17,
+                                    "endLine": 8,
+                                    "endColumn": 50
+                                }
+                            },
+                            "message": {
+                                "text": "Base64 High Entropy String"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "9d651ad75ecf03df05fa99f1059fb60a39f1fe90414b637220b0205c2a18056d"
+                    }
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)",
+                        "markdown": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 11,
+                                    "startColumn": 22,
+                                    "endLine": 11,
+                                    "endColumn": 41
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 11,
+                                    "startColumn": 22,
+                                    "endLine": 11,
+                                    "endColumn": 41
+                                }
+                            },
+                            "message": {
+                                "text": "AWS Access Key"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "9214e4c993ab941fe89389c49f50c272259ef4ef307142922c983f247124ce1c"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 12,
+                                    "startColumn": 26,
+                                    "endLine": 12,
+                                    "endColumn": 57
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 12,
+                                    "startColumn": 26,
+                                    "endLine": 12,
+                                    "endColumn": 57
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "4c15c91aa1ad1faf24d1d50f24a148e01153e566a55eb1076cc3abb76b2201bc"
+                    }
+                },
+                {
+                    "ruleId": "Basic Auth Credentials",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Basic Auth Credentials\nMatches: [Basic Auth Credentials](0)",
+                        "markdown": "Secret detected: Basic Auth Credentials\nMatches: [Basic Auth Credentials](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 13,
+                                    "startColumn": 27,
+                                    "endLine": 13,
+                                    "endColumn": 36
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 13,
+                                    "startColumn": 27,
+                                    "endLine": 13,
+                                    "endColumn": 36
+                                }
+                            },
+                            "message": {
+                                "text": "Basic Auth Credentials"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "e05f79651d465214e7558a382ed0f0e5a77380a649f4573f3a1036dc4ee10c0b"
+                    }
+                },
+                {
+                    "ruleId": "Base64 High Entropy String",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Base64 High Entropy String\nMatches: [Base64 High Entropy String](0)",
+                        "markdown": "Secret detected: Base64 High Entropy String\nMatches: [Base64 High Entropy String](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 16,
+                                    "startColumn": 23,
+                                    "endLine": 16,
+                                    "endColumn": 54
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 16,
+                                    "startColumn": 23,
+                                    "endLine": 16,
+                                    "endColumn": 54
+                                }
+                            },
+                            "message": {
+                                "text": "Base64 High Entropy String"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "7e6c579ddc764183a82786129dd40011c82bd16893e13c47f6ba3c59b8115def"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 19,
+                                    "startColumn": 20,
+                                    "endLine": 19,
+                                    "endColumn": 50
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/app.py"
+                                },
+                                "region": {
+                                    "startLine": 19,
+                                    "startColumn": 20,
+                                    "endLine": 19,
+                                    "endColumn": 50
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "98aaaf3563785d9cba82f82db6e900984951f8e95a4205cc2deba33dfdb5e511"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 12,
+                                    "endLine": 1,
+                                    "endColumn": 38
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 12,
+                                    "endLine": 1,
+                                    "endColumn": 38
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "75a93e10656141226890288d2f086ef92bc95178b50b0517afba3666306d9638"
+                    }
+                },
+                {
+                    "ruleId": "Private Key",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Private Key\nMatches: [Private Key](0)",
+                        "markdown": "Secret detected: Private Key\nMatches: [Private Key](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 21,
+                                    "endLine": 2,
+                                    "endColumn": 37
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 21,
+                                    "endLine": 2,
+                                    "endColumn": 37
+                                }
+                            },
+                            "message": {
+                                "text": "Private Key"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "573da6fd127efb9e9d07de2d30783788373e365fa5abe86c541064f326aebfad"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 3,
+                                    "startColumn": 13,
+                                    "endLine": 3,
+                                    "endColumn": 35
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/config.py"
+                                },
+                                "region": {
+                                    "startLine": 3,
+                                    "startColumn": 13,
+                                    "endLine": 3,
+                                    "endColumn": 35
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "46725c9f5cc6e72f0806514e1ca86745b78595ec36f0366fd7517208773af004"
+                    }
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)",
+                        "markdown": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 13,
+                                    "endLine": 1,
+                                    "endColumn": 32
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 1,
+                                    "startColumn": 13,
+                                    "endLine": 1,
+                                    "endColumn": 32
+                                }
+                            },
+                            "message": {
+                                "text": "AWS Access Key"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "765e9c65f2496dde40d870c3f26e5c9cce9208ac8c0ac5938d606332a33f44b4"
+                    }
+                },
+                {
+                    "ruleId": "AWS Access Key",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)",
+                        "markdown": "Secret detected: AWS Access Key\nMatches: [AWS Access Key](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 56
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 2,
+                                    "startColumn": 17,
+                                    "endLine": 2,
+                                    "endColumn": 56
+                                }
+                            },
+                            "message": {
+                                "text": "AWS Access Key"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "9c6f5bf419636db911b382db9fd8b257a8160ffc991aa94dddff5200116f4d5b"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 14,
+                                    "endLine": 4,
+                                    "endColumn": 48
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 4,
+                                    "startColumn": 14,
+                                    "endLine": 4,
+                                    "endColumn": 48
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "81d8ac20d33f6817e55e2552c90ed5e7f1dc1ef12ba5cc59558f8e50bb8aaf0d"
+                    }
+                },
+                {
+                    "ruleId": "Secret Keyword",
+                    "level": "error",
+                    "message": {
+                        "text": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)",
+                        "markdown": "Secret detected: Secret Keyword\nMatches: [Secret Keyword](0)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 5,
+                                    "startColumn": 10,
+                                    "endLine": 5,
+                                    "endColumn": 41
+                                }
+                            }
+                        }
+                    ],
+                    "relatedLocations": [
+                        {
+                            "id": 0,
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "src/setup.yml"
+                                },
+                                "region": {
+                                    "startLine": 5,
+                                    "startColumn": 10,
+                                    "endLine": 5,
+                                    "endColumn": 41
+                                }
+                            },
+                            "message": {
+                                "text": "Secret Keyword"
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "secret/v1": "cd583c8dd3bf8dd2788414bcd16f54ffe68e991b547ddd70d06cc4ad1508967d"
+                    }
+                }
+            ]
+        }
+    ]
+}

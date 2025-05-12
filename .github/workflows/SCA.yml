@@ -1,32 +1,27 @@
 name: Endor Labs Example
-on: push
+
+on: workflow_dispatch
+
 jobs:
-  ci-scan:
+  build-and-scan:
     permissions:
-      id-token: write # Required for requesting the JWT
+      id-token: write # Write permission is required to request a json web token (JWT) to perform keyless authentication
       contents: read  # Required by actions/checkout@v3 to checkout a private repository
-      pull-requests: write # Required for endorctl to write pr comments
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
           distribution: 'microsoft'
           java-version: '17'
-      - name: Endor Labs Scan Pull Request
-        if: github.event_name == 'pull_request'
+      - name: Compile Package
+        run: mvn clean install
+      - name: Scan with Endor Labs
         uses: endorlabs/github-action@v1.1.4
         with:
-          enable_pr_comments: true # Enable endorctl to write pr comments
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Required for endorctl to write pr comments
-          scan_dependencies: true
-          scan_secrets: true
-          pr: true
-          scan_summary_output_type: "table"
-          tags: "actor=${{ github.actor }},run-id=${{ github.run_id }}"
           namespace: "akhileshsharma"
-          api_key: ${{ secrets.ENDOR_API_CREDENTIALS_KEY }}
-          api_secret: ${{ secrets.ENDOR_API_CREDENTIALS_SECRET }}
-          sarif_file: true
+          api_key: ${{ secrets.ENDOR_API_KEY }}
+          api_secret: ${{ secrets.ENDOR_API_SECRET }}
+          enable_github_action_token: false
