@@ -1,0 +1,6 @@
+{
+  "name": "Hello",
+  "description": "a workflow that prints hello",
+  "iconName": "octicon smily",
+  "categories": ["Utilities"]
+}
